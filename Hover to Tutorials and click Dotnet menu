@@ -1,0 +1,36 @@
+package Seleniumpractise;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Actionsassignment {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.hyrtutorials.com/");
+		
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		WebElement Menu = driver.findElement(By.xpath("//ul[@id=\"nav1\"]/li[2]/a"));
+		
+		Actions Action = new Actions(driver);
+		
+		Action.moveToElement(Menu);
+		
+		WebElement innermenu = driver.findElement(By.xpath("//ul[@id=\"nav1\"]/li[2]/ul/li[1]/a"));
+		
+		Action.moveToElement(innermenu).click().perform();
+	}
+
+}
