@@ -1,0 +1,47 @@
+package Seleniumpractise;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Actionstypingusernameinfields {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("https://www.saucedemo.com/");
+
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+		WebElement Accepted_usernames = driver.findElement(By.id("login_credentials"));
+
+		WebElement Usernamefield = driver.findElement(By.id("user-name"));
+		
+		WebElement Passwordfield = driver.findElement(By.id("password"));
+
+		Actions copy = new Actions(driver);
+
+		copy.moveToElement(Accepted_usernames).moveByOffset(-100, 30).doubleClick().keyDown(Keys.CONTROL).sendKeys("c");
+
+		copy.moveToElement(Usernamefield).click().keyDown(Keys.CONTROL).sendKeys("v").perform();
+
+		copy.moveToElement(Accepted_usernames).moveByOffset(200, 0).doubleClick().keyDown(Keys.CONTROL).sendKeys("c");
+
+		copy.moveToElement(Passwordfield).click().keyDown(Keys.CONTROL).sendKeys("v").perform();
+
+		WebElement login = driver.findElement(By.id("login-button"));
+
+		//login.click();
+
+	}
+
+}
